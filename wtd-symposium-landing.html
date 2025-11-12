@@ -422,6 +422,12 @@
             .why-content p { text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
         }
         
+        /* Increase font weight in the Why Does It Matter paragraphs for better legibility */
+        .why-matters p,
+        .why-content p {
+            font-weight: 500; /* use 600 if you prefer stronger weight */
+        }
+        
         .animate-fade-in {
             animation: fadeIn 0.8s ease-in;
         }
@@ -827,9 +833,24 @@
 
         /* Typography: ensure fluid scaling on headings/texts where appropriate */
         #principles h2 { font-size: clamp(1.5rem, 4vw, 3.6rem); line-height: 1.08; }
+
+        /* WTD: set main section title color to WTD purple for the explicit sections requested.
+           Targets: Guiding Principles (#principles) and Partners (#partners).
+           Also include defensive selectors for .principles, .partners and .why-matters if present. */
+        #principles h2,
+        #partners h2,
+        #about h2,
+        .principles h2,
+        .partners h2,
+        .why-matters h2,
+        .about-title {
+            color: #702283 !important;
+        }
         #about .about-title { font-size: clamp(1.35rem, 4vw, 3.2rem); line-height: 1.06; }
         .principle-body h4 { font-size: clamp(0.95rem, 2.1vw, 1.125rem); line-height: 1.15; }
         .principle-body p { font-size: clamp(0.95rem, 2vw, 1rem); line-height: 1.55; }
+
+        
 
         /* -------------------------
            Micro-interactions & reveal animations
@@ -1147,13 +1168,6 @@
 
             <div class="principles-grid mb-12">
                 <article class="principle-card" aria-labelledby="principle-ppi">
-                    <div class="principle-icon" aria-hidden="true">
-                        <!-- people icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5S14.343 11 16 11zM8 11c1.657 0 3-1.567 3-3.5S9.657 4 8 4 5 5.567 5 7.5 6.343 11 8 11z" fill="white"/>
-                            <path d="M2 20c0-2.209 3.134-4 7-4s7 1.791 7 4v1H2v-1z" fill="white"/>
-                        </svg>
-                    </div>
                     <div class="principle-body">
                         <h3 id="principle-ppi">Patient & Public Involvement</h3>
                         <p>Lived and professional expertise are equally valued, driving co-created innovation and shared ownership of outcomes.</p>
@@ -1161,13 +1175,6 @@
                 </article>
 
                 <article class="principle-card" aria-labelledby="principle-framing">
-                    <div class="principle-icon" aria-hidden="true">
-                        <!-- layers icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7l10 5 10-5L12 2z" fill="white"/>
-                            <path d="M2 13l10 5 10-5" fill="white"/>
-                        </svg>
-                    </div>
                     <div class="principle-body">
                         <h3 id="principle-framing">Framing</h3>
                         <p>Priorities are identified in dementia care, equity, and leadership through diverse academic and community lenses.</p>
@@ -1175,15 +1182,6 @@
                 </article>
 
                 <article class="principle-card" aria-labelledby="principle-diversity">
-                    <div class="principle-icon" aria-hidden="true">
-                        <!-- diversity: mosaic/people dots (filled for visual consistency) -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <circle cx="6" cy="6" r="2.2" fill="white" />
-                            <circle cx="18" cy="6" r="2.2" fill="white" />
-                            <circle cx="6" cy="18" r="2.2" fill="white" />
-                            <circle cx="18" cy="18" r="2.2" fill="white" />
-                        </svg>
-                    </div>
                     <div class="principle-body">
                         <h3 id="principle-diversity">Diversity</h3>
                         <p>Perspectives are connected across disciplines, cultures, and experiences to spark new collaborations.</p>
@@ -1191,13 +1189,6 @@
                 </article>
 
                 <article class="principle-card" aria-labelledby="principle-action">
-                    <div class="principle-icon" aria-hidden="true">
-                        <!-- rocket icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2c2.5 0 4.5 2 4.5 4.5S14.5 11 12 11 7.5 9 7.5 6.5 9.5 2 12 2z" fill="white"/>
-                            <path d="M2 22s3-1 5-3 3-5 3-5 2 1 5 1 5-2 5-2v4s-3 3-7 3-9 2-11 2z" fill="white"/>
-                        </svg>
-                    </div>
                     <div class="principle-body">
                         <h3 id="principle-action">Action-Focused</h3>
                         <p>Ideas are transformed into real-world strategies that influence policy, practice, and public awareness.</p>
@@ -1229,7 +1220,6 @@
     <section id="partners" class="py-12 md:py-20 bg-white">
         <div class="container mx-auto px-6 max-w-6xl text-center">
             <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4">Partners</h2>
-            <p class="text-gray-600 mb-12">In partnership with organisations that support and collaborate with the WTD Symposium.</p>
 
                 <nav class="partners" aria-label="Parceiros">
                 <ul class="partners-grid" role="list">
