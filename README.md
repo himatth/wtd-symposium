@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+Light build (minify) for WTD Symposium landing
+
+What this adds
+- A minimal build script that minifies `wtd-symposium-landing.html` (including inline CSS/JS) and writes to `dist/wtd-symposium-landing.html`.
+- A `package.json` with a `build` script that runs the Node minifier.
+
+Why
+- Provides a lightweight, zero-configuration step to reduce payload size and improve performance (LCP, TTFB).
+- Keeps changes minimal and avoids changing markup or styles.
+
+# wtd-symposium
+
 Light build (minify) for WTD Symposium landing
 
 What this adds
