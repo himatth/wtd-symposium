@@ -691,9 +691,9 @@
         :root{ --hero-overlay-bg: rgba(112,34,131,0.86); }
 
         :root {
-            --reveal-dur: 230ms; /* between 200-300ms */
-            --reveal-ease: cubic-bezier(0.2,0.6,0.2,1);
-            --reveal-stagger: 100ms; /* between 80-120ms */
+        --reveal-dur: 160ms; /* reduced for snappier reveal */
+        --reveal-ease: cubic-bezier(0.2,0.6,0.2,1);
+        --reveal-stagger: 60ms; /* reduced stagger for faster perceived load */
         }
 
         /* Reveal item initial state (applied via JS to section children)
@@ -880,7 +880,11 @@
                     <!-- Grouped blocks so floats sit beside their target paragraphs on mobile -->
                     <div class="about-paragraph">
                         <div class="about-inline about-inline--mobile thumb--right" aria-hidden="true">
-                            <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            <picture>
+                                <source type="image/avif" srcset="img/JFB_9226.avif">
+                                <source type="image/webp" srcset="img/JFB_9226.webp">
+                                <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            </picture>
                         </div>
                         <p class="about-lead mb-4">
                             The WTD Symposium is an annual two-day convening that blends <strong>science, knowledge translation, dialogue, and collaboration</strong> through panel discussions, roundtables, and interactive workshops. Beyond its program, it offers meaningful networking moments that spark authentic exchange and lasting partnerships.
@@ -889,14 +893,22 @@
 
                     <div class="about-paragraph">
                         <div class="about-inline about-inline--mobile thumb--left" aria-hidden="true">
-                            <img src="img/385A8787.jpg" alt="Audience" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            <picture>
+                                <source type="image/avif" srcset="img/385A8787.avif">
+                                <source type="image/webp" srcset="img/385A8787.webp">
+                                <img src="img/385A8787.jpg" alt="Audience" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            </picture>
                         </div>
                         <p class="about-lead mb-6">
                             Bringing together researchers, clinicians, policymakers, people living with dementia, care partners, patient associations, care providers, NGOs, advocates, artists, and innovators, the Symposium cultivates a global community dedicated to advancing innovation, leadership, and real-world impact in dementia research, care, and policy.
                         </p>
 
                         <div class="about-inline about-inline--mobile thumb--right" aria-hidden="true">
-                            <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-full object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            <picture>
+                                <source type="image/avif" srcset="img/beth-milles.avif">
+                                <source type="image/webp" srcset="img/beth-milles.webp">
+                                <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-full object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                            </picture>
                         </div>
                     </div>
 
@@ -926,13 +938,25 @@
                 <!-- Right: visual card cluster -->
                 <div class="about-cards">
                     <div class="card bg-white">
-                        <img src="img/385A8787.jpg" alt="Audience" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        <picture>
+                            <source type="image/avif" srcset="img/385A8787.avif">
+                            <source type="image/webp" srcset="img/385A8787.webp">
+                            <img src="img/385A8787.jpg" alt="Audience" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        </picture>
                     </div>
                     <div class="card bg-white">
-                        <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-auto max-h-[360px] object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        <picture>
+                            <source type="image/avif" srcset="img/beth-milles.avif">
+                            <source type="image/webp" srcset="img/beth-milles.webp">
+                            <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-auto max-h-[360px] object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        </picture>
                     </div>
                     <div class="card bg-white hidden md:block">
-                        <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        <picture>
+                            <source type="image/avif" srcset="img/JFB_9226.avif">
+                            <source type="image/webp" srcset="img/JFB_9226.webp">
+                            <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                        </picture>
                     </div>
                 </div>
             </div>
