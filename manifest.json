@@ -1,0 +1,21 @@
+{
+  "name": "WTD 2026 Symposium",
+  "short_name": "WTD 2026",
+  "description": "Walking the Talk for Dementia Symposium 2026 - Santiago de Compostela",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#702283",
+  "icons": [
+    {
+      "src": "/assets/favicons/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

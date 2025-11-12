@@ -1,0 +1,23 @@
+{
+  "name": "wtd-symposium-site",
+  "version": "1.0.0",
+  "description": "Light build tools for WTD Symposium landing (lightweight minify + preload hints)",
+  "private": true,
+  "scripts": {
+  "build": "node scripts/build.js",
+  "prebuild": "node scripts/optimize-images.js",
+  "build:min": "MINIFY=1 node scripts/build.js",
+  "minify:html": "npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --collapse-boolean-attributes --remove-empty-attributes --minify-js true --minify-css true -o dist/wtd-symposium-landing.html wtd-symposium-landing.html",
+  "optimize:images": "node scripts/optimize-images.js",
+  "axe": "node scripts/run-axe.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.1.0",
+    "sharp": "^0.33.0",
+    "puppeteer": "^21.0.0",
+    "axe-core": "^4.11.0"
+  }
+}

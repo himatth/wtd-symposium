@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wtdsymposium.org/sitemap.xml

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+docs/axe-report.json
+docs/lighthouse-a11y.html
+axe-report.json
+lighthouse-a11y.html
+.env
+.env.*
+.vscode/
+.idea/
+*.orig
+*-original.*
+

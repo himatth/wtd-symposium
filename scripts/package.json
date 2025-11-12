@@ -1,0 +1,8 @@
+{
+  "name": "wtd-image-tools",
+  "version": "1.0.0",
+  "scripts": {
+    "compress-hero": "node compress-hero.js"
+  },
+  "dependencies": {}
+}
