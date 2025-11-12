@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WTD 2026 Symposium | Santiago de Compostela</title>
+
+    <!-- Essential Meta -->
+    <meta name="description" content="WTD 2026 Symposium - A global platform advancing Patient and Public Involvement, innovation, and leadership in dementia research, policy, and practice. July 3-4, 2026 in Santiago de Compostela, Spain.">
+    <meta name="keywords" content="dementia, symposium, research, Patient Public Involvement, WTD, brain health, Santiago de Compostela, GBHI, neuroscience">
+    <meta name="author" content="Walking the Talk for Dementia Institute">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wtdsymposium.org/">
+    <meta property="og:title" content="WTD 2026 Symposium | Santiago de Compostela">
+    <meta property="og:description" content="A global platform advancing Patient and Public Involvement, innovation, and leadership in dementia research. July 3-4, 2026.">
+    <meta property="og:image" content="img/hero-bg.webp">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wtdsymposium.org/">
+    <meta property="twitter:title" content="WTD 2026 Symposium | Santiago de Compostela">
+    <meta property="twitter:description" content="A global platform advancing Patient and Public Involvement, innovation, and leadership in dementia research. July 3-4, 2026.">
+    <meta property="twitter:image" content="img/hero-bg.webp">
+
+    <!-- Canonical + robots -->
+    <link rel="canonical" href="https://wtdsymposium.org/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#702283">
+
+    <!-- Preconnect & Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/favicon-512x512.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Preload hero image to improve LCP (prefer modern formats) -->
+    <link rel="preload" as="image" href="img/hero-bg.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- Hero responsive improvements --- */
+        .hero-content {
+            max-width: 1100px;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* smooth lift on desktop so hero content sits slightly higher visually */
+        .hero-content { transition: transform 260ms cubic-bezier(.2,.9,.2,1); }
+
+        @media (min-width: 768px) {
+            .hero-content { transform: translateY(-3vh); }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content { transform: translateY(-6vh); }
+        }
+
+        .hero-title {
+            /* fluid, readable headline across sizes */
+            font-size: clamp(2.2rem, 6vw, 4.8rem);
+            line-height: 1.02;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.2vw, 1.375rem);
+            line-height: 1.45;
+            font-weight: 500;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            box-shadow: 0 12px 30px rgba(112,34,131,0.18);
+        }
+
+        /* Ensure hero media fills container, preserves aspect ratio and avoids CLS on desktop */
+        .hero-media, .hero-media img, .hero-media picture { width: 100%; height: 100%; display: block; }
+        .hero-media img { object-fit: cover; object-position: center; }
+        @media (min-width: 1024px) {
+            /* enforce a stable 16:9 aspect ratio on large viewports to avoid CLS while keeping full-bleed */
+            #main-content .hero-media { aspect-ratio: 16 / 9; }
+        }
+
+        /* Reduce overlay darkness slightly for better foreground contrast on small screens
+           and nudge the hero content downward so logo/title/CTA sit lower on small viewports. */
+        @media (max-width: 640px) {
+            .hero-overlay { opacity: 0.9; }
+            /* increase top padding to move the hero content down on mobile */
+            .hero-content { padding-top: 3.5rem; }
+        }
+
+          /* Ensure raster images in About cards render without extra CSS filters or grain.
+              We avoid globally forcing 'filter: none !important' so we can apply a localized
+              controlled smoothing on specific images that are visibly grainy. */
+        .card img, .about-cards img, .about-cards .card img {
+            image-rendering: auto !important;
+            mix-blend-mode: normal !important;
+            background-blend-mode: normal !important;
+            opacity: 1 !important;
+            backface-visibility: hidden !important;
+            transform: translateZ(0);
+        }
+
+        /* Localized visual correction: apply only when .smooth is present on an about-card image.
+           Very small blur + slight contrast to reduce visible JPEG blocking/grain without
+           noticeably softening the image at card sizes. */
+        .about-cards .card img.smooth {
+            -webkit-filter: blur(0.35px) contrast(1.03) saturate(1.02);
+            filter: blur(0.35px) contrast(1.03) saturate(1.02);
+            will-change: filter;
+        }
+
+        /* About section modern styles */
+        .about-title {
+            font-size: clamp(1.6rem, 3.8vw, 3.2rem);
+            line-height: 1.03;
+            font-weight: 800;
+            color: #111827; /* gray-900 */
+        }
+
+        .about-lead {
+            font-size: clamp(1rem, 2.2vw, 1.125rem);
+            color: #374151; /* gray-700 */
+            line-height: 1.6;
+        }
+
+        .about-stats .stat-item { min-width: 6rem; }
+
+        .about-stats .stat-number {
+            font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+            font-weight: 800;
+            color: #702283;
+            line-height: 1;
+        }
+
+        .about-stats .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #6b7280; /* gray-600 */
+            letter-spacing: 0.08em;
+        }
+
+        .about-stats .sep {
+            width: 1px;
+            height: 48px;
+            background: #e6e6ea;
+            margin: 0 0.75rem;
+        }
+
+        /* Stat cards: visual, side-by-side on desktop, stacked on mobile */
+        .about-stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: stretch;
+            margin-top: 0.5rem;
+        }
+
+        .about-stats .stat-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            box-shadow: 0 14px 40px rgba(16,24,40,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 10rem;
+            flex: 1 1 10rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-stats .stat-card { flex: 0 0 auto; width: 12rem; text-align: center; }
+        }
+
+        .about-stats .stat-card .stat-number { font-size: clamp(1.6rem, 3.2vw, 2.4rem); }
+        .about-stats .stat-card .stat-label { font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+        .about-cards .card {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(16,24,40,0.08);
+        }
+
+        /* Purple stat blocks under About */
+        .stat-blocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .stat-block {
+            background: linear-gradient(180deg,#702283 0%, #5a1b6f 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(112,34,131,0.14);
+            min-height: 88px;
+        }
+
+        .stat-block .stat-number { font-size: 1.65rem; font-weight: 800; line-height: 1; }
+        .stat-block .stat-label { font-size: 0.8rem; opacity: 0.92; margin-top: 0.35rem; text-align: center; }
+
+        @media (max-width: 767px) {
+            .stat-blocks { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 768px) {
+            .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: center; }
+            .about-cards .card:nth-child(1) { transform: translateY(-10%); }
+            .about-cards .card:nth-child(3) { transform: translateY(8%); }
+        }
+
+        /* Hero logo - force white rendering for raster logo when needed */
+        .hero-logo-white {
+            -webkit-filter: grayscale(1) brightness(0) invert(1);
+            filter: grayscale(1) brightness(0) invert(1);
+        }
+
+        .gradient-card {
+            background: linear-gradient(135deg, #fff7ff 0%, #ffffff 100%);
+        }
+        
+        .gradient-card-alt {
+            background: linear-gradient(135deg, #f7fbff 0%, #ffffff 100%);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(112, 34, 131, 0.92) 0%, rgba(83, 25, 99, 0.88) 100%);
+        }
+
+        /* Background image for Why Does It Matter block (prefer WebP) */
+        .why-bg {
+            /* Prefer WebP, fallback to JPG if needed. Use relative path with ./ to be resilient
+               when the page is served from a subpath. */
+            background-image: url('./img/385A0120.webp'), url('./img/385A0120.jpg');
+            background-size: cover;
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-color: #efeef2; /* subtle fallback while image loads */
+        }
+        /* Slightly reduce overlay opacity on the Why block so the background image is visible */
+        .why-bg .hero-overlay {
+            opacity: 0.7 !important;
+        }
+
+        /* Subtle text shadow for the Why block to improve legibility over the photo */
+        .why-content h3,
+        .why-content p {
+            text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+        }
+        @media (max-width: 640px) {
+            .why-content h3,
+            .why-content p { text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(112, 34, 131, 0.15);
+        }
+
+        /* Contact card styling (Dribbble-like modern card) */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 40px rgba(16,24,40,0.14);
+        }
+
+        /* Modernized contact buttons - responsive and accessible */
+        .contact-buttons { display: flex; gap: 0.75rem; align-items: center; }
+        .btn-contact {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+            padding: 0.625rem 1rem; border-radius: 999px; font-weight: 700; font-size: 1rem;
+            transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+            text-decoration: none; white-space: nowrap;
+        }
+        .btn-contact:focus { outline: none; box-shadow: 0 6px 22px rgba(112,34,131,0.14), 0 0 0 4px rgba(112,34,131,0.12); }
+        .btn-primary { background: #fff; color: #702283; box-shadow: 0 12px 30px rgba(112,34,131,0.12); }
+        .btn-primary:hover { transform: translateY(-3px); }
+    /* .btn-secondary removed: Request info button was removed per request */
+
+        /* Mobile: stack buttons full width for easy tapping */
+        @media (max-width: 767px) {
+            .contact-buttons { flex-direction: column; width: 100%; }
+            .btn-contact { width: 100%; padding: 0.75rem 1rem; }
+            .contact-cta { width: 100%; }
+        }
+
+        .contact-card h2 { text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+        .contact-card p { text-shadow: 0 1px 4px rgba(0,0,0,0.18); }
+
+        /* Make sure the contact card doesn't stretch too tall on large screens */
+        @media (min-width: 768px) {
+            .contact-card { min-height: 140px; align-items: center; }
+        }
+
+        .contact-left { max-width: 60ch; margin: 0; }
+        
+        .stat-number {
+            /* slightly smaller minimum on small screens for better fit */
+            font-size: clamp(1.25rem, 4vw, 3.5rem);
+        }
+
+        /* Principles modern cards */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .principle-card {
+            display: flex;
+            gap: 1rem;
+            background: linear-gradient(180deg,#fff #fbfbff);
+            border-radius: 16px;
+            padding: 1.25rem; /* increased padding for legibility */
+            align-items: flex-start; /* allow title + body stacked */
+            box-shadow: 0 18px 40px rgba(16,24,40,0.06);
+            transition: transform .22s ease, box-shadow .22s ease;
+            height: auto; /* allow cards to grow to fit content */
+            min-height: 140px;
+            overflow: visible;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(112,34,131,0.12);
+        }
+
+        .principle-icon {
+            flex: 0 0 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg,#7a2a97 0%, #5a1b6f 100%);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(112,34,131,0.12);
+        }
+
+        /* ensure principle icons are consistent size and fill */
+        .principle-icon svg { width: 32px; height: 32px; fill: white; }
+
+        .principle-body { min-width: 0; }
+        .principle-body h4 {
+            margin: 0 0 0.45rem 0;
+            font-size: clamp(1rem, 1.6vw, 1.125rem);
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.15;
+            white-space: normal;
+            overflow: visible;
+        }
+
+        .principle-body p {
+            margin: 0;
+            color: #374151;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .principles-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .principles-grid { grid-template-columns: repeat(4, 1fr); }
+            .principle-card { padding: 1.5rem; }
+            .principle-icon { flex-basis: 64px; height: 64px; border-radius: 14px; }
+        }
+
+        /* -------------------------
+           Mobile-first adjustments
+           ------------------------- */
+
+        /* About: on small screens show two small thumbnails (80x80) inline/anchored beside the text.
+           Keep the desktop behaviour (grid of cards to the right) thanks to existing md: rules. */
+        @media (max-width: 767px) {
+                    /* Mobile: responsive adjustments that only affect narrow viewports.
+               - Keep desktop layout untouched.
+               - Ensure images scale, horizontal groups stack, stats become single column,
+                 and About section uses an interleaved float layout that stays in document flow. */
+
+                            /* hide inline about thumbs by default (desktop) — shown only on mobile via media query */
+                            /* (moved global rule outside this media block to allow mobile override) */
+
+            /* General images scale to container */
+            img, .card img, .partners-grid img { max-width: 100%; height: auto; display: block; }
+
+            /* Ensure any raster card images are visually constrained on mobile */
+            .about-cards .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+            /* Stack stat blocks into single column on mobile */
+            .stat-blocks { grid-template-columns: 1fr !important; gap: 0.75rem; }
+
+            /* About: flow-friendly interleaved thumbnails using floats (odd=left, even=right) */
+            #about .about-grid { position: relative; }
+                /* hide the right-column card cluster on mobile to avoid duplicating thumbnails
+                    (we show mobile-only inline thumbnails inside the text instead) */
+                #about .about-cards { display: none; }
+            #about .about-cards .card {
+                position: static;
+                width: 80px;
+                height: 80px;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+                background: #fff;
+                margin: 0 12px 12px 0;
+            }
+            /* odd -> left, even -> right to create alternating visual rhythm */
+            #about .about-cards .card:nth-child(odd) { float: left; margin-left: 0; }
+            #about .about-cards .card:nth-child(even) { float: right; margin-right: 0; margin-left: 12px; }
+            /* show the third card on mobile so we have three interleaved thumbnails */
+            #about .about-cards .card:nth-child(3) { display: block; }
+
+            /* clearfix: ensure following content is not overlapped by floats */
+            #about .about-grid::after { content: ""; display: table; clear: both; }
+
+            /* center text on mobile and give horizontal padding so text is centered and readable */
+            #about .about-grid > div:first-child { padding: 0 16px; text-align: center; }
+            @media (max-width: 420px) {
+                #about .about-grid > div:first-child { padding: 0 12px; }
+            }
+
+            /* hide inline about thumbs by default (desktop) — shown only on mobile via media query */
+            .about-inline--mobile { display: none; }
+
+            /* Mobile-only inline thumbnails placed inside the text flow */
+            @media (max-width: 767px) {
+                .about-inline--mobile { display: block !important; width: 100px; height: 100px; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 28px rgba(16,24,40,0.10); background:#fff; }
+                .about-inline--mobile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+                .about-inline--mobile.thumb--left { float: left; margin: 0 14px 12px 0; }
+                .about-inline--mobile.thumb--right { float: right; margin: 0 0 12px 14px; }
+                /* ensure the inline thumbs don't hide the following stats or sections */
+                #about .about-grid::after { content: ""; display: table; clear: both; }
+            }
+
+            /* Ensure next major sections clear floats to avoid layout bleed */
+            #about + section { clear: both; }
+
+            /* Keep the purple stat blocks horizontal on mobile (3 across) as requested */
+            .stat-blocks--mobile { grid-template-columns: repeat(3, 1fr) !important; }
+            /* Slightly tighter padding/min-height on very small screens so the three blocks fit comfortably */
+            .stat-block { padding: 0.65rem 0.9rem; min-height: 64px; }
+            .stat-block .stat-number { font-size: 1.35rem; }
+        }
+
+        /* Toggle which stat-blocks are visible: mobile uses the lower block; desktop shows the in-column block */
+        .stat-blocks--desktop { display: none; }
+        .stat-blocks--mobile { display: grid; }
+    /* mobile inline thumbs visibility is controlled per-breakpoint below */
+
+        @media (min-width: 768px) {
+            .stat-blocks--desktop { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+            .stat-blocks--mobile { display: none; }
+            /* ensure the about-cards column is visible on desktop and laid out as a grid */
+            #about .about-cards { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: center; }
+            /* be explicit that mobile inline thumbs are hidden on desktop */
+            .about-inline--mobile { display: none !important; }
+        }
+
+        /* Stat blocks: responsive grid that becomes 1 or 2 columns on narrow screens and 3 on desktop */
+        .stat-blocks { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+        @media (min-width: 768px) {
+            .stat-blocks { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Principles: tablet breakpoint at 640px (two cols), desktop 1024px (four cols) */
+        @media (min-width: 640px) {
+            .principles-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* --- Section spacing: standardized vertical rhythm for mobile and desktop ---
+           Use CSS variables so spacing can be tuned in one place. Exclude the hero
+           (#main-content) which uses its own min-height and padding. */
+        :root {
+            --section-pt: 2.5rem; /* mobile default top padding */
+            --section-pb: 2.5rem; /* mobile default bottom padding */
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --section-pt: 3.5rem; /* desktop top padding */
+                --section-pb: 4rem;   /* desktop bottom padding */
+            }
+        }
+
+        /* Apply standardized padding to all sections except the hero/main-content. Use !important
+           to ensure this overrides utility classes like `py-12 md:py-28` while keeping desktop visuals. */
+        section:not(#main-content) {
+            padding-top: var(--section-pt) !important;
+            padding-bottom: var(--section-pb) !important;
+        }
+
+        /* Partners: switch to a compact 3-column grid on mobile and expand on larger screens */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(64px, 1fr));
+            gap: 0.5rem;
+            align-items: center;
+            justify-items: center;
+            padding: 0.25rem 0;
+        }
+        .partners-grid a { width: 64px; height: 64px; display: grid; place-items: center; padding: 0.25rem; border-radius: 12px; }
+        .partners-grid img { max-width: 100%; max-height: 48px; object-fit: contain; }
+
+        @media (min-width: 640px) {
+            .partners-grid { grid-template-columns: repeat(4, minmax(88px, 1fr)); gap: 0.75rem; }
+            .partners-grid a { width: 88px; height: 88px; padding: 0.5rem; }
+            .partners-grid img { max-height: 56px; }
+        }
+        @media (min-width: 1024px) {
+            /* slightly larger desktop partner cards for improved legibility */
+            .partners-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+            .partners-grid a { width: 160px; height: 160px; padding: 1rem; }
+            .partners-grid img { max-height: 96px; }
+        }
+
+        /* Desktop: present partners as a tidy grid (4-6 columns depending on width),
+           normalize logo sizing and spacing. Keeps mobile behavior untouched. */
+        @media (min-width: 1024px) {
+            /* Desktop: responsive grid that fits logos into columns without overflow.
+               auto-fit will create as many columns as fit, wrapping to additional rows
+               when necessary so nothing is cut off. */
+            .partners-grid {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 1.5rem;
+                align-items: center;
+                justify-items: center;
+                padding: 0.75rem 1.5rem !important; /* horizontal padding to avoid edge-cutoff */
+                width: 100%;
+            }
+
+            .partners-grid li { display: block; box-sizing: border-box; width: 100%; }
+
+            .partners-grid a {
+                width: 100%;
+                max-width: 220px;
+                height: 120px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0.75rem !important;
+                background: #fff;
+                border-radius: 12px;
+                box-sizing: border-box;
+            }
+
+            .partners-grid img {
+                max-height: 72px;
+                width: auto;
+                max-width: 100%;
+                object-fit: contain;
+                display: block;
+                margin: 0 auto;
+            }
+
+            /* Reduce vertical spacing between Partners and surrounding sections on desktop (slightly tighter) */
+            section#partners { padding-bottom: 0.75rem !important; }
+            section#partners + section { padding-top: 1.5rem !important; }
+            #partners h2 { margin-bottom: 0.5rem !important; }
+            #partners p { margin-bottom: 0.75rem !important; }
+        }
+
+        /* Mobile-only partners carousel (touch-friendly) ----------------------------------
+           We keep the desktop/grid behavior intact; on small viewports the partners
+           container becomes a horizontally scrollable, snap-aligned carousel. */
+        @media (max-width: 767px) {
+            .partners-grid {
+                display: flex !important;
+                flex-direction: row;
+                gap: 0.75rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 0.75rem 0.5rem;
+                scroll-snap-type: x mandatory;
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            .partners-grid::-webkit-scrollbar { height: 8px; }
+            .partners-grid::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 8px; }
+
+            .partners-grid a {
+                flex: 0 0 auto;
+                width: 120px; /* slightly larger on mobile to match desktop visual weight */
+                min-width: 120px;
+                height: 120px;
+                padding: 0.5rem;
+                scroll-snap-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
+                border-radius: 12px;
+            }
+
+            .partners-grid img { max-height: 72px; max-width: 110px; }
+        }
+
+        /* Mobile-only controls (small custom arrows under the carousel) */
+        .partners-controls { display: none; }
+        @media (max-width: 767px) {
+            .partners-controls { display: block; }
+            .partners-controls .controls-inner { display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 8px; }
+            .btn-partner-arrow {
+                width: 44px; height: 44px; border-radius: 999px; display: inline-grid; place-items: center;
+                background: linear-gradient(135deg,#702283,#9a63b5); color: #fff; border: none; box-shadow: 0 8px 20px rgba(112,34,131,0.18);
+                transition: transform .16s ease, box-shadow .16s ease;
+            }
+            .btn-partner-arrow:active { transform: translateY(1px) scale(0.995); }
+            .btn-partner-arrow svg { width: 18px; height: 18px; fill: white; }
+            /* Reduce vertical padding for partners on very small screens to avoid large blank area */
+            section#partners { padding-top: 1.25rem !important; padding-bottom: 0.75rem !important; }
+                /* Visually emphasise the centered partner item on mobile (always active) */
+                .partners-grid a { opacity: 0.78; transform: none; transition: opacity .18s ease, transform .18s ease; }
+                .partners-grid a.is-active { opacity: 1; transform: translateY(-6px) scale(1.03); box-shadow: 0 18px 36px rgba(112,34,131,0.12); }
+
+                /* Reduce the vertical gap between Partners and the following sections on mobile.
+                    - Force smaller padding-bottom on the partners section.
+                    - Reduce the padding-top of the immediately following section so stacked spacing is minimal.
+                    - Tweak heading/lead margins inside #partners to avoid extra gap from mb- utilities. */
+                section#partners { padding-bottom: 0.5rem !important; }
+                section#partners + section { padding-top: 0.5rem !important; }
+                /* tighten title and lead spacing inside partners */
+                #partners h2 { margin-bottom: 0.5rem !important; }
+                #partners p { margin-bottom: 0.75rem !important; }
+        }
+
+        /* Hide the redundant 'Event Details Repeat' on small viewports to eliminate the gap
+           and tighten its vertical padding on desktop. */
+        @media (max-width: 767px) {
+            .gradient-purple { display: none !important; }
+        }
+
+        @media (min-width: 1024px) {
+            /* make the Event Details section more compact on desktop */
+            .gradient-purple { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+            /* tighten contact spacing so Get in Touch sits closer */
+            section#contact { padding-top: 1rem !important; padding-bottom: 1.5rem !important; }
+            /* ensure partners bottom is small but consistent on desktop */
+            section#partners { padding-bottom: 0.75rem !important; }
+        }
+
+        /* Typography: ensure fluid scaling on headings/texts where appropriate */
+        #principles h2 { font-size: clamp(1.5rem, 4vw, 3.6rem); line-height: 1.08; }
+        #about .about-title { font-size: clamp(1.35rem, 4vw, 3.2rem); line-height: 1.06; }
+        .principle-body h4 { font-size: clamp(0.95rem, 2.1vw, 1.125rem); line-height: 1.15; }
+        .principle-body p { font-size: clamp(0.95rem, 2vw, 1rem); line-height: 1.55; }
+
+        /* -------------------------
+           Micro-interactions & reveal animations
+           - Lightweight CSS + native JS IntersectionObserver
+           - Respect prefers-reduced-motion and avoid animating the hero LCP element
+           - Transforms & opacity only (no layout changes) to keep CLS at zero
+           ------------------------- */
+
+        /* Hero overlay variable for accessible contrast. Do not change layout. */
+        :root{ --hero-overlay-bg: rgba(112,34,131,0.86); }
+
+        :root {
+            --reveal-dur: 230ms; /* between 200-300ms */
+            --reveal-ease: cubic-bezier(0.2,0.6,0.2,1);
+            --reveal-stagger: 100ms; /* between 80-120ms */
+        }
+
+        /* Reveal item initial state (applied via JS to section children)
+           Use only opacity & transform so we don't affect layout (no CLS). */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity var(--reveal-dur) var(--reveal-ease), transform var(--reveal-dur) var(--reveal-ease);
+            will-change: opacity, transform;
+        }
+
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover / focus micro-lift for subtle interaction polish */
+        .card, .principle-card, .partners-grid a, .btn-contact, .hero-cta, .btn-partner-arrow, .about-cards .card {
+            transition: transform 180ms var(--reveal-ease), box-shadow 180ms var(--reveal-ease);
+            will-change: transform, box-shadow;
+        }
+
+        .card:hover, .principle-card:hover, .partners-grid a:hover, .btn-contact:hover, .hero-cta:hover, .about-cards .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+        }
+
+        /* Focus-visible accessible outline that's subtle and consistent */
+        .card:focus-visible, .principle-card:focus-visible, .partners-grid a:focus-visible, .btn-contact:focus-visible, .hero-cta:focus-visible {
+            outline: 3px solid rgba(112,34,131,0.14);
+            outline-offset: 4px;
+            box-shadow: 0 6px 18px rgba(112,34,131,0.06);
+        }
+
+        /* Buttons: accessible contrast and focus-visible outlines */
+        .btn-primary {
+            background: #14041a;
+            color: #fff;
+            border: 1px solid #14041a;
+        }
+        .btn-primary:focus-visible {
+            outline: 2px solid #f2eef4;
+            outline-offset: 3px;
+        }
+
+        .btn-ghost, .btn-secondary {
+            background: #fff;
+            color: #111;
+            border: 1px solid #e5e5e5;
+        }
+        .btn-ghost:focus-visible, .btn-secondary:focus-visible {
+            outline: 2px solid #14041a;
+            outline-offset: 3px;
+        }
+
+        /* Footer/legal: ensure sufficient contrast against footer background */
+        .site-footer, .site-footer small, .legal {
+            color: #cfc8d6;
+        }
+
+        /* Reduce motion: disable transitions & transforms when user requests reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-item, .card, .principle-card, .partners-grid a, .btn-contact, .hero-cta, .btn-partner-arrow, .about-cards .card {
+                transition: none !important;
+                transform: none !important;
+                animation: none !important;
+            }
+        }
+
+        /* Hint to the browser that hero media may be transformed for parallax (transform-only) */
+        .hero-media img { will-change: transform; }
+
+        /* Accessibility: add a semi-opaque overlay layer above hero media so
+           color-contrast tools and users get a deterministic background. No
+           structural/visual changes intended — overlay uses pointer-events:none. */
+        .hero-media{ position: relative; }
+        .hero-media::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--hero-overlay-bg);
+            pointer-events: none;
+        }
+
+        /* Ensure hero copy uses explicit light color and avoid text-shadow for
+           reliable contrast measurement and clearer rendering on images/gradients. */
+        .hero .hero-title,
+        .hero .hero-sub,
+        .hero .hero-lead,
+        .hero-title, .hero-sub, .hero p, .hero-content p,
+        /* selectors requested explicitly by acceptance criteria */
+        .hero .heading, .hero .subheading, .hero .lead {
+            color: #fff !important;
+            text-shadow: none !important;
+        }
+
+    </style>
+</head>
+<body class="bg-white">
+        <!-- Skip link for keyboard users -->
+        <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#702283] focus:text-white focus:rounded-full focus:outline-none focus:ring-4 focus:ring-[#702283]/50">
+            Skip to main content
+        </a>
+
+    
+
+    <!-- Hero Section with Background Image -->
+    <section id="main-content" class="relative min-h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden mt-0 pb-24 md:pb-0">
+            <div class="absolute inset-0 hero-media">
+                <picture>
+                    <source type="image/avif" srcset="img/hero-bg.avif">
+                    <source type="image/webp" srcset="img/hero-bg.webp">
+                    <img
+                        src="img/hero-bg.jpg"
+                        alt="Caminhada WTD"
+                        width="1920"
+                        height="1080"
+                        fetchpriority="high"
+                        decoding="async"
+                        class="object-cover object-center w-full h-full opacity-80">
+                </picture>
+            <div class="absolute inset-0 bg-gradient-to-br from-[#702283] via-[#531963] to-[#702283] opacity-80"></div>
+        </div>
+
+    <!-- Hero content: logo + headline + details -->
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white animate-fade-in hero-content">
+                <div class="mb-4 md:mb-6">
+                <img src="branding/logo/LOGO_WTD.png" alt="WTD Symposium logo" class="h-10 sm:h-12 md:h-16 lg:h-20 xl:h-24 object-contain mx-auto hero-logo-white" loading="eager" width="260" height="72" decoding="async">
+            </div>
+
+            <!-- mobile partners controls were moved to the Partners section to avoid hero overlap -->
+
+            <h1 class="hero-title font-[Montserrat,Arial,sans-serif] drop-shadow-lg">
+                WTD 2026 Symposium
+            </h1>
+
+            <p class="hero-sub text-white drop-shadow max-w-3xl">
+                A global platform advancing Patient and Public Involvement, innovation, and leadership in dementia research, policy, and practice
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-6 mb-8 text-sm sm:text-base">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="font-semibold">3 - 4 July, 2026</span>
+                </div>
+                <span class="hidden sm:block">|</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="font-semibold">Santiago de Compostela, Spain</span>
+                </div>
+            </div>
+
+            <p class="text-sm sm:text-base md:text-base font-light max-w-2xl mx-auto mb-8 opacity-95">
+                Hosted by the <strong>Walking the Talk for Dementia Institute (Brazil)</strong> in partnership with <strong>Global Brain Health Institute - Trinity College Dublin (GBHI-TCD)</strong> and <strong>Alzheimer's Association of Santiago de Compostela (AGADEA)</strong>
+            </p>
+
+            <div class="flex items-center justify-center">
+                <a href="mailto:info@wtdsymposium.org" class="inline-block px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-white text-[#702283] rounded-full font-bold text-base md:text-lg hover:scale-105 transition transform hero-cta">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- About Section (modernized) -->
+    <section id="about" class="py-12 md:py-28 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="mb-12 md:mb-16">
+                <div class="flex items-center justify-center md:justify-start gap-6">
+                    <h2 class="about-title">About the Symposium</h2>
+                    <div class="hidden md:block w-28 h-1 bg-[#702283] rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 items-start mb-12 about-grid">
+                <!-- Left: text -->
+                <div class="pr-0 md:pr-8">
+                    <!-- Grouped blocks so floats sit beside their target paragraphs on mobile -->
+                    <div class="about-paragraph">
+                        <div class="about-inline about-inline--mobile thumb--right" aria-hidden="true">
+                            <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                        </div>
+                        <p class="about-lead mb-4">
+                            The WTD Symposium is an annual two-day convening that blends <strong>science, knowledge translation, dialogue, and collaboration</strong> through panel discussions, roundtables, and interactive workshops. Beyond its program, it offers meaningful networking moments that spark authentic exchange and lasting partnerships.
+                        </p>
+                    </div>
+
+                    <div class="about-paragraph">
+                        <div class="about-inline about-inline--mobile thumb--left" aria-hidden="true">
+                            <img src="img/385A8787.jpg" alt="Audience" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                        </div>
+                        <p class="about-lead mb-6">
+                            Bringing together researchers, clinicians, policymakers, people living with dementia, care partners, patient associations, care providers, NGOs, advocates, artists, and innovators, the Symposium cultivates a global community dedicated to advancing innovation, leadership, and real-world impact in dementia research, care, and policy.
+                        </p>
+
+                        <div class="about-inline about-inline--mobile thumb--right" aria-hidden="true">
+                            <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-full object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 40vw, (max-width:1024px) 50vw, 33vw" decoding="async">
+                        </div>
+                    </div>
+
+                    <p class="text-lg font-semibold text-gray-700 italic mb-6">Where science, experience, and collaboration meet.</p>
+
+                        
+
+                    <!-- Purple stat blocks: desktop placement (visible on md+). -->
+                    <div class="stat-blocks stat-blocks--desktop" aria-label="Symposium statistics">
+                        <div class="stat-block" role="group" aria-labelledby="stat-days">
+                            <div id="stat-days" class="stat-number">2</div>
+                            <div class="stat-label">Days</div>
+                        </div>
+
+                        <div class="stat-block" role="group" aria-labelledby="stat-countries">
+                            <div id="stat-countries" class="stat-number">25+</div>
+                            <div class="stat-label">Countries represented</div>
+                        </div>
+
+                        <div class="stat-block" role="group" aria-labelledby="stat-participants">
+                            <div id="stat-participants" class="stat-number">120+</div>
+                            <div class="stat-label">Global participants</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: visual card cluster -->
+                <div class="about-cards">
+                    <div class="card bg-white">
+                        <img src="img/385A8787.jpg" alt="Audience" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/385A8787.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                    </div>
+                    <div class="card bg-white">
+                        <img src="img/beth-milles.jpg" alt="Collaboration" class="w-full h-auto max-h-[360px] object-cover smooth" loading="lazy" width="1200" height="800" srcset="img/beth-milles.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                    </div>
+                    <div class="card bg-white hidden md:block">
+                        <img src="img/JFB_9226.jpg" alt="Networking" class="w-full h-auto max-h-[360px] object-cover" loading="lazy" width="1200" height="800" srcset="img/JFB_9226.jpg 1200w" sizes="(max-width:767px) 100vw, 50vw" decoding="async">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purple stat blocks below About (mobile-only copy) -->
+            <div class="stat-blocks stat-blocks--mobile mt-6 mb-8" aria-label="Symposium statistics">
+                <div class="stat-block" role="group" aria-labelledby="stat-days-mobile">
+                    <div id="stat-days-mobile" class="stat-number">2</div>
+                    <div class="stat-label">Days</div>
+                </div>
+
+                <div class="stat-block" role="group" aria-labelledby="stat-countries-mobile">
+                    <div id="stat-countries-mobile" class="stat-number">25+</div>
+                    <div class="stat-label">Countries represented</div>
+                </div>
+
+                <div class="stat-block" role="group" aria-labelledby="stat-participants-mobile">
+                    <div id="stat-participants-mobile" class="stat-number">120+</div>
+                    <div class="stat-label">Global participants</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section id="principles" class="py-12 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-6">Guiding Principles</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Each edition of the Symposium is grounded in principles that celebrate diversity, inclusion, and collaboration, turning ideas into action and experience into evidence.
+                </p>
+            </div>
+
+            <div class="principles-grid mb-12">
+                <article class="principle-card" aria-labelledby="principle-ppi">
+                    <div class="principle-icon" aria-hidden="true">
+                        <!-- people icon -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5S14.343 11 16 11zM8 11c1.657 0 3-1.567 3-3.5S9.657 4 8 4 5 5.567 5 7.5 6.343 11 8 11z" fill="white"/>
+                            <path d="M2 20c0-2.209 3.134-4 7-4s7 1.791 7 4v1H2v-1z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="principle-body">
+                        <h3 id="principle-ppi">Patient & Public Involvement</h3>
+                        <p>Lived and professional expertise are equally valued, driving co-created innovation and shared ownership of outcomes.</p>
+                    </div>
+                </article>
+
+                <article class="principle-card" aria-labelledby="principle-framing">
+                    <div class="principle-icon" aria-hidden="true">
+                        <!-- layers icon -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5L12 2z" fill="white"/>
+                            <path d="M2 13l10 5 10-5" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="principle-body">
+                        <h3 id="principle-framing">Framing</h3>
+                        <p>Priorities are identified in dementia care, equity, and leadership through diverse academic and community lenses.</p>
+                    </div>
+                </article>
+
+                <article class="principle-card" aria-labelledby="principle-diversity">
+                    <div class="principle-icon" aria-hidden="true">
+                        <!-- diversity: mosaic/people dots (filled for visual consistency) -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="6" cy="6" r="2.2" fill="white" />
+                            <circle cx="18" cy="6" r="2.2" fill="white" />
+                            <circle cx="6" cy="18" r="2.2" fill="white" />
+                            <circle cx="18" cy="18" r="2.2" fill="white" />
+                        </svg>
+                    </div>
+                    <div class="principle-body">
+                        <h3 id="principle-diversity">Diversity</h3>
+                        <p>Perspectives are connected across disciplines, cultures, and experiences to spark new collaborations.</p>
+                    </div>
+                </article>
+
+                <article class="principle-card" aria-labelledby="principle-action">
+                    <div class="principle-icon" aria-hidden="true">
+                        <!-- rocket icon -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2c2.5 0 4.5 2 4.5 4.5S14.5 11 12 11 7.5 9 7.5 6.5 9.5 2 12 2z" fill="white"/>
+                            <path d="M2 22s3-1 5-3 3-5 3-5 2 1 5 1 5-2 5-2v4s-3 3-7 3-9 2-11 2z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="principle-body">
+                        <h3 id="principle-action">Action-Focused</h3>
+                        <p>Ideas are transformed into real-world strategies that influence policy, practice, and public awareness.</p>
+                    </div>
+                </article>
+            </div>
+
+                <!-- Why it Matters -->
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 why-bg">
+                    <!-- Use the same purple hero overlay directly so the background image shows through with a purple wash -->
+                    <div class="absolute inset-0 hero-overlay"></div>
+                </div>
+                <div class="relative z-10 p-12 md:p-16 text-center text-white why-content">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">Why Does It Matter?</h3>
+                    <p class="text-2xl md:text-3xl font-light mb-8 italic">Inclusive science leads to better science!</p>
+                    <p class="text-lg leading-relaxed max-w-3xl mx-auto mb-4">
+                        The Symposium is part of a growing movement recognizing that innovation in dementia cannot happen without the active participation of those most affected.
+                    </p>
+                    <p class="text-lg leading-relaxed max-w-3xl mx-auto">
+                        By bridging academic research, lived experience, and policy, WTD builds a more equitable and human-centered approach to dementia research and care.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-12 md:py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4">Partners</h2>
+            <p class="text-gray-600 mb-12">In partnership with organisations that support and collaborate with the WTD Symposium.</p>
+
+                <nav class="partners" aria-label="Parceiros">
+                <ul class="partners-grid" role="list">
+                <!-- AGADEA -->
+                <li>
+                    <a href="https://agadea.org/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="AGADEA - open partner site" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/Agadea.webp" alt="AGADEA logo" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- GBHI (no external URL provided) -->
+                <li>
+                    <a aria-disabled="true" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="GBHI - open partner site">
+                        <img src="partners/GBHI-logo.svg" alt="GBHI logo" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- Atlantic Fellows -->
+                <li>
+                    <a href="https://www.atlanticfellows.org/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="Atlantic Fellows" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/Atlantic+Fellows.webp" alt="Atlantic Fellows" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- Brain Lat -->
+                <li>
+                    <a href="https://brainlat.uai.cl/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="Brain Lat" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/Brain+Lat.webp" alt="Brain Lat" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- EBC -->
+                <li>
+                    <a href="https://www.braincouncil.eu/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="European Brain Council" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/EBC.webp" alt="European Brain Council" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- ILC Brazil -->
+                <li>
+                    <a href="https://ilcbrazil.org.br/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="ILC Brazil" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/ILC.webp" alt="ILC Brazil" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- USC -->
+                <li>
+                    <a href="https://www.usc.gal/en" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="USC" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/USC.webp" alt="USC" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- WYLD -->
+                <li>
+                    <a href="https://wyldementia.org/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="WYLD" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/WYLD.webp" alt="WYLD" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- AZ / Alzheimer's Disease International -->
+                <li>
+                    <a href="https://www.alzint.org/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="Alzheimer's Disease International" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/AZ.webp" alt="Alzheimer's Disease International" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- Nature Reviews Neurology -->
+                <li>
+                    <a href="https://www.nature.com/nrneurol/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="Nature Reviews Neurology" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/NRNeurol+2.webp" alt="Nature Reviews Neurology" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+
+                <!-- Paint Clover Purple -->
+                <li>
+                    <a href="https://www.facebook.com/paintcloverpurple/" class="group w-24 h-24 sm:w-36 sm:h-36 p-4 sm:p-6 rounded-2xl bg-gray-50 flex items-center justify-center hover-lift shadow transition" title="Paint Clover Purple" target="_blank" rel="noopener noreferrer">
+                        <img src="partners/PCP.webp" alt="Paint Clover Purple" class="object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100" loading="lazy" width="600" height="400" decoding="async">
+                    </a>
+                </li>
+                </ul>
+                </nav>
+            <!-- Mobile-only carousel controls (prev / next) placed below partners -->
+            <div class="partners-controls" aria-hidden="false">
+                <div class="controls-inner">
+                    <button type="button" class="partners-prev btn-partner-arrow" aria-label="Previous partner">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                    </button>
+                    <button type="button" class="partners-next btn-partner-arrow" aria-label="Next partner">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Repeat -->
+    <section class="py-6 gradient-purple">
+        <div class="container mx-auto px-6 text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Mark Your Calendar</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-xl">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="font-semibold">3 - 4 July, 2026</span>
+                </div>
+                <span class="hidden md:block text-2xl">•</span>
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="font-semibold">Santiago de Compostela, Spain</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Get in Touch Section (modernized) -->
+    <section id="contact" class="py-6 md:py-16 bg-gradient-to-br from-[#702283] via-[#531963] to-[#702283]">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="contact-card relative rounded-2xl p-6 md:p-10 bg-white/6 backdrop-blur-sm border border-white/10 flex flex-col md:flex-row items-center md:items-center justify-between gap-6 text-white">
+                <div class="contact-left text-center md:text-left flex-1">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Get in Touch</h2>
+                    <div class="hidden md:block w-24 h-1 bg-[#9a63b5] mx-0 rounded-full mb-4"></div>
+                    <p class="text-lg text-white/90 leading-relaxed max-w-3xl">
+                        For sponsorship opportunities, registration details, or scientific inquiries, please reach out. We're happy to connect and discuss how you can participate.
+                    </p>
+                </div>
+
+                <div class="contact-cta flex-shrink-0">
+                    <div class="contact-buttons">
+                        <a href="mailto:info@wtdsymposium.org" class="btn-contact btn-primary" aria-label="Email Walking the Talk for Dementia">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>info@wtdsymposium.org</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1d1d1f] text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <!-- compact branding -->
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="font-semibold">WTD Symposium 2026</span>
+            </div>
+
+            <!-- single social link: Instagram -->
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="https://www.instagram.com/walkingthetalkfordementia/" target="_blank" rel="noopener noreferrer" aria-label="Walking the Talk for Dementia on Instagram" class="text-gray-400 hover:text-white transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zM12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm4.75-3.25a1.06 1.06 0 11-2.12 0 1.06 1.06 0 012.12 0z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- optional short credit -->
+            <p class="text-gray-500 text-xs">
+                © 2026 Walking the Talk for Dementia Institute. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Consolidated JS: smooth scroll, header effect, mobile toggle, IntersectionObserver
+        (function () {
+            // Smooth scroll for same-page anchors (ignore external and mailto links)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // only handle same-page hashes
+                    const href = this.getAttribute('href');
+                    if (!href || href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // accessibility: focus target
+                        target.setAttribute('tabindex', '-1');
+                        target.focus({preventScroll: true});
+                        // remove the temporary tabindex after focus to keep DOM semantics
+                        setTimeout(() => { try { target.removeAttribute('tabindex'); } catch(e){} }, 0);
+                    }
+                });
+            });
+
+            // Header scroll effect: add subtle shadow and background on scroll
+            const header = document.querySelector('header');
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        if (!header) { ticking = false; return; }
+                        if (window.scrollY > 24) {
+                            header.classList.add('shadow-xl', 'backdrop-blur-sm', 'glass-header');
+                        } else {
+                            header.classList.remove('shadow-xl', 'backdrop-blur-sm');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Mobile menu toggle (aria handling)
+            const btn = document.getElementById('mobile-menu-btn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', String(!expanded));
+                    document.documentElement.classList.toggle('mobile-nav-open');
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        btn.setAttribute('aria-expanded', 'false');
+                        document.documentElement.classList.remove('mobile-nav-open');
+                    }
+                });
+            }
+
+            // IntersectionObserver for on-scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+            /*
+             * New: Lightweight reveal animations using IntersectionObserver.
+             * - Reveal section children (opacity + translateY) with a small stagger.
+             * - Respect prefers-reduced-motion and skip the hero (#main-content).
+             * - Use threshold 0.15 and once:true behavior (unobserve after reveal).
+             */
+            function setupRevealAnimations() {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const revealThreshold = 0.15;
+                const rootMargin = '0px 0px -8% 0px';
+
+                const revealObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        const container = entry.target;
+                        // find direct children to reveal; keep hero out
+                        const children = Array.from(container.querySelectorAll(':scope > *'))
+                            .filter(n => n.nodeType === 1);
+
+                        // mark each child as a reveal-item (initial state applied via CSS)
+                        children.forEach((child, i) => {
+                            child.classList.add('reveal-item');
+                        });
+
+                        // reveal children with stagger; if reduced motion, reveal instantly
+                        const minStagger = 80, maxStagger = 120;
+                        const baseStagger = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--reveal-stagger')) || 100;
+
+                        children.forEach((child, i) => {
+                            const delay = prefersReduced ? 0 : (baseStagger * i);
+                            if (prefersReduced) {
+                                child.classList.add('revealed');
+                            } else {
+                                setTimeout(() => child.classList.add('revealed'), delay);
+                            }
+                        });
+
+                        // once:true behavior
+                        obs.unobserve(container);
+                    });
+                }, { threshold: revealThreshold, rootMargin });
+
+                // Observe all sections except the main hero (#main-content) and the footer (if using <footer>)
+                const sections = Array.from(document.querySelectorAll('section'))
+                    .filter(s => s.id !== 'main-content');
+
+                sections.forEach(s => revealObserver.observe(s));
+            }
+
+            // Initialize reveal animations on load
+            window.addEventListener('load', setupRevealAnimations);
+
+            /*
+             * Minimal parallax for desktop hero background
+             * - Small translateY capped at 4px based on page scroll
+             * - Disabled on mobile and when prefers-reduced-motion is set
+             * - Uses transform only (no layout changes) so CLS is unaffected
+             */
+            function setupHeroParallax() {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReduced) return; // no parallax when reduced motion requested
+
+                const mq = window.matchMedia('(min-width: 1024px)'); // desktop only
+                const heroImg = document.querySelector('#main-content .hero-media img');
+                if (!heroImg) return;
+
+                let ticking = false;
+                function onScroll() {
+                    if (!mq.matches) {
+                        heroImg.style.transform = '';
+                        return;
+                    }
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const max = 4; // px
+                            // small factor so parallax is subtle
+                            const factor = 0.02;
+                            const y = Math.min(max, window.scrollY * factor);
+                            heroImg.style.transform = `translateY(${y}px)`;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }
+
+                window.addEventListener('scroll', onScroll, { passive: true });
+                window.addEventListener('resize', onScroll);
+                // set initial position (no animation on load; this won't affect LCP)
+                onScroll();
+            }
+
+            window.addEventListener('load', setupHeroParallax);
+
+            // When GLightbox is added, initialize it with: const lightbox = GLightbox({ selector: '.glightbox' });
+
+            // Mobile-only Prev/Next that advances partner-by-partner (wrap-around). Keeps sync if user swipes.
+            function initPartnersControls() {
+                const mq = window.matchMedia('(max-width: 767px)');
+                const container = document.querySelector('.partners-grid');
+                const prev = document.querySelector('.partners-prev');
+                const next = document.querySelector('.partners-next');
+                if (!container || !prev || !next) return;
+
+                const items = Array.from(container.querySelectorAll('li'));
+                if (items.length === 0) return;
+
+                // items are <li> elements; find their inner anchors for applying the visual "is-active" state
+                const itemAnchors = items.map(it => (it.tagName && it.tagName.toLowerCase() === 'a') ? it : (it.querySelector ? it.querySelector('a') : null));
+
+                function setActiveIndex(index) {
+                    items.forEach((el, i) => {
+                        const node = itemAnchors[i] || el;
+                        node.classList.toggle('is-active', i === index);
+                    });
+                }
+
+                let current = 0;
+
+                function computeLeftForIndex(idx) {
+                    const clamped = ((idx % items.length) + items.length) % items.length;
+                    const target = items[clamped];
+                    return { clamped, left: Math.max(0, target.offsetLeft - (container.clientWidth - target.clientWidth) / 2) };
+                }
+
+                function scrollToIndex(idx, applyActiveAfter = true) {
+                    const { clamped, left } = computeLeftForIndex(idx);
+                    // perform the smooth scroll using pre-computed left value (avoids reflow-caused jumps)
+                    container.scrollTo({ left: left, behavior: 'smooth' });
+                    // delay applying the active class until after scroll animation begins/settles
+                    if (applyActiveAfter) {
+                        if (container._activeTimeout) clearTimeout(container._activeTimeout);
+                        container._activeTimeout = setTimeout(() => {
+                            setActiveIndex(clamped);
+                            current = clamped;
+                            container._activeTimeout = null;
+                        }, 260);
+                    } else {
+                        current = clamped;
+                    }
+                }
+
+                // Update current index after user scrolls (find nearest to center)
+                let scrollTimeout = null;
+                container.addEventListener('scroll', () => {
+                    if (scrollTimeout) clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const center = container.scrollLeft + container.clientWidth / 2;
+                        let nearest = 0, minDist = Infinity;
+                        items.forEach((el, i) => {
+                            const elCenter = el.offsetLeft + el.clientWidth / 2;
+                            const dist = Math.abs(center - elCenter);
+                            if (dist < minDist) { minDist = dist; nearest = i; }
+                        });
+                        current = nearest;
+                        // update active class immediately when user scrolls
+                        setActiveIndex(current);
+                    }, 80);
+                }, { passive: true });
+
+                prev.addEventListener('click', (e) => { e.preventDefault(); const target = current - 1; scrollToIndex(target, true); });
+                next.addEventListener('click', (e) => { e.preventDefault(); const target = current + 1; scrollToIndex(target, true); });
+
+                const toggleControls = () => {
+                    if (mq.matches) {
+                        prev.style.display = '';
+                        next.style.display = '';
+                    } else {
+                        prev.style.display = 'none';
+                        next.style.display = 'none';
+                        container.scrollLeft = 0;
+                        current = 0;
+                    }
+                };
+
+                toggleControls();
+                mq.addEventListener('change', toggleControls);
+
+                // Expose a quick reposition on resize/orientation change
+                const recompute = () => { if (items[current]) { scrollToIndex(current, false); setActiveIndex(current); } };
+                window.addEventListener('orientationchange', () => setTimeout(recompute, 220));
+                window.addEventListener('resize', () => setTimeout(recompute, 140));
+
+                // initialize active on load (mark nearest to center)
+                setTimeout(() => {
+                    const center = container.scrollLeft + container.clientWidth / 2;
+                    let nearest = 0, minDist = Infinity;
+                    items.forEach((el, i) => {
+                        const elCenter = el.offsetLeft + el.clientWidth / 2;
+                        const dist = Math.abs(center - elCenter);
+                        if (dist < minDist) { minDist = dist; nearest = i; }
+                    });
+                    current = nearest;
+                    setActiveIndex(current);
+                }, 80);
+            }
+
+            // Initialize on load
+            window.addEventListener('load', initPartnersControls);
+
+            // Distribute partner widths on desktop so all logos fit without showing a scrollbar.
+            function distributePartnerWidths() {
+                const mqDesktop = window.matchMedia('(min-width: 1024px)');
+                const container = document.querySelector('.partners-grid');
+                if (!container) return;
+                const items = Array.from(container.querySelectorAll('li'));
+                if (!mqDesktop.matches) {
+                    // clear inline sizing for mobile/tablet so original behavior applies
+                    items.forEach(it => { it.style.flex = ''; it.style.width = ''; it.style.maxWidth = ''; });
+                    container.style.overflowX = '';
+                    return;
+                }
+
+                // Let CSS handle sizing on desktop. Clear any inline sizing and remove overflow control.
+                items.forEach(it => { it.style.flex = ''; it.style.width = ''; it.style.maxWidth = ''; });
+                container.style.overflowX = '';
+            }
+
+            // debounce helper
+            let _distTimeout = null;
+            function scheduleDistribute() { if (_distTimeout) clearTimeout(_distTimeout); _distTimeout = setTimeout(() => { distributePartnerWidths(); _distTimeout = null; }, 120); }
+
+            window.addEventListener('load', () => { distributePartnerWidths(); });
+            window.addEventListener('resize', scheduleDistribute);
+            window.addEventListener('orientationchange', scheduleDistribute);
+
+        })();
+    </script>
+    </body>
+</html>
