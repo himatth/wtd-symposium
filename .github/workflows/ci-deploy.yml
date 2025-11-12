@@ -23,10 +23,23 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug: list dist contents
+        # Helpful when diagnosing CI failures: shows whether build produced files
+        run: |
+          echo "== dist listing ==" && ls -la ./dist || true
+          echo "== head of dist/wtd-symposium-landing.html ==" && (head -n 40 ./dist/wtd-symposium-landing.html || true)
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
+        # Note: some orgs / repos use branch protection that blocks the default GITHUB_TOKEN
+        # from pushing to protected branches (e.g. gh-pages). If your deploy step fails with
+        # a permissions/403 error, create a personal access token (PAT) with `repo` scope,
+        # add it to repository secrets as `GH_PAGES_DEPLOY_TOKEN`, and the action will use it.
         with:
+          # default: the GITHUB_TOKEN provided to the workflow
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # optional: a PAT stored in repo secrets; set this if branch protection prevents GITHUB_TOKEN pushes
+          personal_token: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
           user_name: 'github-actions[bot]'
