@@ -1,23 +1,35 @@
 {
   "name": "wtd-symposium-site",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/himatth/wtd-symposium.git"
+  },
   "description": "Light build tools for WTD Symposium landing (lightweight minify + preload hints)",
   "private": true,
   "scripts": {
   "build": "node scripts/build.js",
-  "prebuild": "node scripts/optimize-images.js",
-  "build:min": "MINIFY=1 node scripts/build.js",
-  "minify:html": "npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --collapse-boolean-attributes --remove-empty-attributes --minify-js true --minify-css true -o dist/wtd-symposium-landing.html wtd-symposium-landing.html",
-  "optimize:images": "node scripts/optimize-images.js",
-  "axe": "node scripts/run-axe.js"
+    "build:min": "MINIFY=1 node scripts/build.js",
+    "minify:html": "npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --collapse-boolean-attributes --remove-empty-attributes --minify-js true --minify-css true -o dist/wtd-symposium-landing.html wtd-symposium-landing.html",
+    "optimize:images": "node scripts/optimize-images.js",
+    "axe": "node scripts/run-axe.js",
+    "start": "npx serve dist -p 5000",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "engines": {
     "node": ">=18"
   },
   "devDependencies": {
+    "axe-core": "^4.11.0",
+    "gh-pages": "^6.3.0",
     "html-minifier-terser": "^7.1.0",
-    "sharp": "^0.33.0",
+    "serve": "^14.2.0"
+  }
+
+  ,
+  "optionalDependencies": {
     "puppeteer": "^21.0.0",
-    "axe-core": "^4.11.0"
+    "sharp": "^0.33.0"
   }
 }
